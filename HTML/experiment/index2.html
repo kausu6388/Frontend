@@ -1,17 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Rothko Painting</title>
-    <link href="style2.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="frame">
-      <div class="canvas">
-        <div class="one"></div>
-        <div class="two"></div>
-        <div class="three"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Showcase</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #222;
+    }
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 220px;
+      height: 100vh;
+      background: linear-gradient(135deg, #4f8cff 60%, #6ee7b7 100%);
+      color: #fff;
+      padding: 2rem 1rem;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    }
+    .sidebar h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 2rem;
+    }
+    .sidebar li {
+      margin-bottom: 1.5rem;
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .sidebar a:hover {
+      color: #222;
+    }
+    .content {
+      margin-left: 240px;
+      padding: 2rem 3vw;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: #4f8cff;
+      letter-spacing: 1px;
+    }
+    .products {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(79,140,255,0.08);
+      padding: 1.5rem;
+      width: 260px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(79,140,255,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 0.7rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      margin: 0.5rem 0 0.7rem 0;
+      color: #222;
+      font-size: 1.2rem;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+    .buy-btn {
+      background: linear-gradient(90deg, #4f8cff 60%, #6ee7b7 100%);
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .buy-btn:hover {
+      background: linear-gradient(90deg, #6ee7b7 60%, #4f8cff 100%);
+      color: #222;
+    }
+    .blog-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(79,140,255,0.08);
+      padding: 1.5rem;
+      width: 320px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .blog-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(79,140,255,0.15);
+    }
+    .blog-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 0.7rem;
+      margin-bottom: 1rem;
+    }
+    .blog-card h3 {
+      margin: 0.5rem 0 0.7rem 0;
+      color: #4f8cff;
+      font-size: 1.15rem;
+      text-align: center;
+    }
+    .blog-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .read-more {
+      background: #4f8cff;
+      color: #fff;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-align: center;
+      margin-top: auto;
+    }
+    .read-more:hover {
+      background: #6ee7b7;
+      color: #222;
+    }
+    @media (max-width: 900px) {
+      .content {
+        margin-left: 0;
+        padding: 1rem;
+      }
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 1rem;
+        text-align: center;
+      }
+      .products, .blog-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#blogs">Blogs</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Products Section -->
+    <h1 id="products" class="section-title">Our Products</h1>
+    <div class="products">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Product">
+        <h3>Modern Sneakers</h3>
+        <p>Comfortable and stylish sneakers for everyday wear.</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1637412173653-de70428ee3ce?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product">
+        <h3>Smart Watch</h3>
+        <p>Track your health and stay connected with ease.</p>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1592921870789-04563d55041c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product">
+        <h3>Wireless Earbuds</h3>
+        <p>Experience crisp sound quality with noise cancellation.</p>
+        <button class="buy-btn">Buy Now</button>
       </div>
     </div>
-  </body>
-</html>
+
+    <!-- Blog Section -->
+    <h1 id="blogs" class="section-title">Latest Blogs</h1>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1642132652806-8aa09801c2ab?q=80&w=2320&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Blog">
+        <h3>How to Build Responsive UI</h3>
+        <p>Learn tips and tricks to make your websites adapt beautifully on any device.</p>
+        <div class="read-more">Read More</div>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1642132652806-8aa09801c2ab?q=80&w=2320&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Blog">
+        <h3>Designing with Flexbox</h3>
+        <p>Flexbox is a powerful layout tool. Here’s how you can use it effectively.</p>
+        <div class="read-more">Read More</div>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1642132652806-8aa09801c2ab?q=80&w=2320&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Blog">
+        <h3>E-commerce UI Tips</h3>
+        <p>Boost your sales with a clean and user-friendly product card design.</p>
+        <div class="read-more">Read More</div>
+      </div>
+    </div>
+  </div>
