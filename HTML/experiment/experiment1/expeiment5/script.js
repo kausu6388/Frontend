@@ -1,5 +1,5 @@
 // const username = prompt("mr. kaushik");
-// alert(`hello ${username} welcome to my website`);
+// alert("hello duniya");
 let age = prompt("enter age:");
 
 age = Number(age); 
