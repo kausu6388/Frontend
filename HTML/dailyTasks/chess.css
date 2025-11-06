@@ -1,0 +1,31 @@
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 12px solid;
+    border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7) 1;
+    animation: borderGlow 2s infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% {
+        border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7) 1;
+    }
+    100% {
+        border-image: linear-gradient(45deg, #ffeaa7, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4) 1;
+    }
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    background-color: #f0d9b5;
+}
+
+.square.dark {
+    background-color: #b58863;
+}
