@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Toggle Box Size</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,34 +16,35 @@
         .small-box {
             width: 200px;
             height: 200px;
-            background-color: lightblue;
+            background-color: rgb(175, 227, 42);
             margin-bottom: 20px;
+            transition: all 2s ease;
         }
-        .big-box{
+        .big-box {
             width: 400px;
             height: 400px;
-            background-color: lightcoral;   
+            background-color: rgb(223, 9, 9);
+            transition: all 3s ease;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    
     <script>
         const body = document.querySelector('body');
-       const box = document.createElement('div');
-       const btn = document.createElement('button');
-       btn.textContent = 'Click Me';
-       body.appendChild(box);
-       body.appendChild(btn);
+        const box = document.createElement('div');
+        const btn = document.createElement('button');
 
-       box.classList.add('small-box');
+        btn.textContent = 'Click Me';
+        body.appendChild(box);
+        body.appendChild(btn);
 
-       //event handler function
-       btn.addEventListener('click', function() {
-           box.classList.add('big-box');
-           box
+        box.classList.add('small-box');
 
-       });
+        btn.addEventListener('click', function() {
+            box.classList.toggle('big-box');
+            box.classList.toggle('small-box');
+        });
     </script>
 </body>
 </html>
